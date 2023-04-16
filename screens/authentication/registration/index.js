@@ -16,66 +16,7 @@ const Registration = () =>{
     )
       return (
         <>
-             {/*<View style={style.container}>
-                <Text>Email</Text>
-                <TextInput style ={style.inputFields} value ={data.email} onChangeText={(email) =>{
-                     onChangeData({
-                        ...data,
-                        "email": email
-                     })
-                }}/>
-                <Text>Username</Text>
-                <TextInput style ={style.inputFields} value ={data.username} onChangeText ={(username) =>{
-                    onChangeData({
-                    ...data,
-                    "username": username    
-                    })
-                }} />
-                <Text>Password</Text>
-                <TextInput style ={style.inputFields} value ={data.password} onChangeText ={(password) =>{
-                    onChangeData({
-                    ...data,
-                    "password": password    
-                    })
-                }} />
-                <Text>First Name</Text>
-                <TextInput style ={style.inputFields} value ={data.first_name} onChangeText ={(firstname) =>{
-                    onChangeData({
-                    ...data,
-                    "first_name": firstname    
-                    })
-                }} />
-                <Text>Last Name</Text>
-                <TextInput style ={style.inputFields} value ={data.last_name} onChangeText ={(lastname) =>{
-                    onChangeData({
-                    ...data,
-                    "last_name": lastname    
-                    })
-                }} />
-                <Text>Birthdate</Text>
-                <TextInput style ={style.inputFields} value ={data.birthdate} onChangeText ={(birthdate) =>{
-                    onChangeData({
-                    ...data,
-                    "birthdate": birthdate    
-                    })
-                }} />
-                <Text>Gender</Text>
-                <TextInput style ={style.inputFields} value ={data.gender} onChangeText ={(gender) =>{
-                    onChangeData({
-                    ...data,
-                    "gender": gender   
-                    })
-                }} />
-             </View>*/}
-             {/*<View style={{paddingTop: 20}}>
-                <Button title="submit" onPress={()=>{
-                    axios.post('accounts/users/',data).then(response =>{
-                        console.log(response.data); // postman ni edmar
-                    }).catch(error =>{
-                        console.log(error.response.data)
-                    })
-                }}/>
-            </View> */}
+        
             <View style={style.container}>
                 <InputField label ="Email" placeholder="Your Email" value={data.email} onChangeText={(email) =>{
                     onChangeData ({
@@ -123,7 +64,7 @@ const Registration = () =>{
             <View style={{paddingTop: 20}}>
                 <Button title="submit" onPress={()=>{
                     axios.post('accounts/users/',data).then(response =>{
-                        console.log(response.data); // postman ni edmar
+                        console.log(response.data); // axios ni edmar
                     }).catch(error =>{
                         console.log(error.response.data)
                     })
