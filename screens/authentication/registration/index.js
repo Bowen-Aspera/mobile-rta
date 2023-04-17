@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { StyleSheet, Button, TextInput, Text, View } from "react-native"
+import { StyleSheet, Button, TextInput, Text, View, Alert } from "react-native"
 import axios from '../../../plugins/axios';
 import InputField from "../../../components/InputField"
 const Registration = () =>{
@@ -10,8 +10,6 @@ const Registration = () =>{
         "password": "",
         "first_name": "",
         "last_name": "",
-        "birthdate": null,
-        "gender": ""
     }
     )
       return (
@@ -48,24 +46,13 @@ const Registration = () =>{
                         'last_name' : lastname
                     })
                 }} />
-                <InputField label ="Birthdate" placeholder="Your Birthdate" value={data.birthdate} onChangeText={(birthdate) =>{
-                    onChangeData ({
-                        ...data,
-                        'birthdate' : birthdate
-                    })
-                }} />
-                <InputField label ="Gender" placeholder="Your Gender" value={data.gender} onChangeText={(gender) =>{
-                    onChangeData ({
-                        ...data,
-                        'gender' : gender
-                    })
-                }} />
             </View>
             <View style={{paddingTop: 20}}>
                 <Button title="submit" onPress={()=>{
-                    axios.post('accounts/users/',data).then(response =>{
-                        console.log(response.data); // axios ni edmar
-                    }).catch(error =>{
+                    axios.post('accounts/users/',data).then(response=>{
+                        console.log(response.data)
+                        Alert.alert("SUCCESSFULLY REGISTERED!")
+                    }).catch(error=>{
                         console.log(error.response.data)
                     })
                 }}/>
