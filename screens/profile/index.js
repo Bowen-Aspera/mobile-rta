@@ -1,59 +1,62 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, TextInput, View, Button, Alert } from "react-native";
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 import axios from "../../plugins/axios";
+import AsyncStorage from "@react-native-async-storage/async-storage"; // npm install @react-native-async-storage/async-storage // dili mag run saimuhang end
+import { useQuery, QueryClientProvider} from "react-query";
+
 const Profile = () => {
-    const [userData, setUserData] = useState(null);
-  
-    useEffect(() => {
-      // Retrieve user data from server
-      axios.get('accounts/users/me/')
-        .then(response => {
-          setUserData(response.data);
-        })
-        .catch(error => {
-          console.log(error.response.data)
-        })
-    }, []);
-  
-    return (
-      <>
-        <View style={styles.container}>
-          <Text style={styles.label}>Email:</Text>
-          <Text style={styles.value}>{userData?.email}</Text>
-  
-          <Text style={styles.label}>Username:</Text>
-          <Text style={styles.value}>{userData?.username}</Text>
-  
-          <Text style={styles.label}>First Name:</Text>
-          <Text style={styles.value}>{userData?.first_name}</Text>
-  
-          <Text style={styles.label}>Last Name:</Text>
-          <Text style={styles.value}>{userData?.last_name}</Text>
-  
-          <Text style={styles.label}>Birthdate:</Text>
-          <Text style={styles.value}>{userData?.birthdate}</Text>
-  
-          <Text style={styles.label}>Gender:</Text>
-          <Text style={styles.value}>{userData?.gender}</Text>
-        </View>
-      </>
-    )
+  function UserInfo(){
+    const token = AsyncStorage.getItem("token");
+    return axios.get("http://localhost:8000/api/v1/accounts/users/me",{
+      headers:{
+        Authorization: 'Token' + token,
+      },
+    })
+    .then((response)=>{
+      return response.data;
+    });
   }
-  
-  export default Profile;
-  
-  const styles = StyleSheet.create({
-    container: {
-      paddingHorizontal: 20,
-      paddingVertical: 30,
-    },
-    label: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      marginBottom: 5,
-    },
-    value: {
-      fontSize: 16,
-      marginBottom: 15,
-    },
-  });
+
+  const {data, isLoading, error} = useQuery('user', UserInfo, {retry: 0});
+
+  if(isLoading && !error){
+    return(
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
+  } else if (error){
+    return(
+      <View>
+        <Text>An error has occured</Text>
+      </View>
+    );
+  }
+
+  return (
+    <>
+      <View style={styles.container}>
+        {/* Render user data */}
+        <Text style={styles.label}>Email:</Text>
+      </View>
+    </>
+  );
+};
+
+export default Profile;
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 20,
+    paddingVertical: 30,
+  },
+  label: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  value: {
+    fontSize: 16,
+    marginBottom: 15,
+  },
+});
