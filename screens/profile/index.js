@@ -22,13 +22,13 @@ const Profile = () => {
   if(isLoading && !error){
     return(
       <View>
-        <Text>Loading...</Text>
+        <Text>Loading...please wait</Text>
       </View>
     );
   } else if (error){
     return(
       <View>
-        <Text>An error has occured</Text>
+        <Text>An error has occured!!!</Text>
       </View>
     );
   }
@@ -47,16 +47,16 @@ export default Profile;
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 25,
     paddingVertical: 30,
   },
   label: {
-    fontSize: 18,
+    fontSize: 12,
     fontWeight: 'bold',
-    marginBottom: 5,
+    marginBottom: 8,
   },
   value: {
-    fontSize: 16,
-    marginBottom: 15,
+    fontSize: 14,
+    marginBottom: 17,
   },
 });
