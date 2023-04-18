@@ -10,9 +10,9 @@ export default function App() {
   return (
   <NavigationContainer>
     <Stack.Navigator initialRouteName = "Login">
-      <Stack.Screen name= "Login" component ={Login}/>
-      <Stack.Screen name= "Register" component = {Registration}/>
-      <Stack.Screen name= "Profile" component= {Profile}/>
+      <Stack.Screen name= "Log" component ={Login}/>
+      <Stack.Screen name= "Reg" component = {Registration}/>
+      <Stack.Screen name= "Prof" component= {Profile}/>
     </Stack.Navigator>
   </NavigationContainer>
   );
