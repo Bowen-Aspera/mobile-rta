@@ -21,16 +21,16 @@ const Login = ({ navigation }) => {
       .then(async (response) => {
         await AsyncStorage.setItem('token', response.data.auth_token);
         console.log(response);
-        Alert.alert("Login successful!");
+        Alert.alert("The Login was successful!");
         navigation.navigate('Profile'); // navigate to profile on success
       })
       .catch((error) => {
         if (error.response && error.response.data) {
           console.log(error.response.data);
-          Alert.alert("Login failed.");
+          Alert.alert("Login failed :(");
         } else {
           console.log(error);
-          Alert.alert("An error occurred.");
+          Alert.alert("ERROR!");
         }
       });
   };
