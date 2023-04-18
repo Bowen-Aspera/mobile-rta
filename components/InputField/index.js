@@ -14,8 +14,8 @@ const InputField = props => {
 const style = StyleSheet.create({
     input:{
     borderColor: 'black',
-         borderWidth: 1,
-         padding: 2,
+         borderWidth: 4,
+         padding: 6,
     },
 
 })
