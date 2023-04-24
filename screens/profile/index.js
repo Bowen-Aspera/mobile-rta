@@ -4,7 +4,7 @@ import axios from "../../plugins/axios";
 import AsyncStorage from "@react-native-async-storage/async-storage"; // npm install @react-native-async-storage/async-storage // dili mag run saimuhang end
 import { useQuery, QueryClientProvider} from "react-query";
 
-const Profile = () => {
+const Prof = () => {
   function UserInfo(){
     const token = AsyncStorage.getItem("token");
     return axios.get("http://localhost:8000/api/v1/accounts/users/me",{
@@ -43,17 +43,17 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Prof;
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
-    paddingVertical: 30,
+    paddingHorizontal: 25,
+    paddingVertical: 35,
   },
   label: {
-    fontSize: 18,
+    fontSize: 23,
     fontWeight: 'bold',
-    marginBottom: 5,
+    marginBottom: 10,
   },
   value: {
     fontSize: 16,
